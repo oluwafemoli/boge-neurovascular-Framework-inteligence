@@ -1,130 +1,723 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview | BOGE Neurovascular Framework Intelligence</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boge Neurovascular Framework Intelligence | Academic Research Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardBg: '#131c2e',
+                        borderCol: '#1e293b',
+                        accentTeal: '#06b6d4',
+                        accentCrimson: '#f43f5e',
+                        accentBlue: '#3b82f6'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome & Chart.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-  <header class="site-header">
-    <div class="container nav-bar">
-      <a href="index.html" class="brand">
-        <div class="brand-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M12 3v6m0 0l-5 5m5-5l5 5M7 14v7m10-7v7" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="12" cy="3" r="2"/>
-            <circle cx="7" cy="14" r="2"/>
-            <circle cx="17" cy="14" r="2"/>
-          </svg>
-        </div>
-        <div>
-          BOGE Neurovascular
-          <span class="brand-sub">Framework Intelligence Lab</span>
-        </div>
-      </a>
+<body class="bg-darkBg text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-accentTeal selection:text-black">
 
-      <nav class="nav-links" aria-label="Primary Navigation">
-        <a href="index.html" class="active">Overview</a>
-        <a href="research.html" >Research</a>
-        <a href="resources.html" >Resources &amp; Code</a>
-        <a href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" rel="noopener" class="nav-cta">
-          GitHub Repository
-        </a>
-      </nav>
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-blue-900 via-teal-900 to-slate-900 text-xs py-2 px-4 text-center border-b border-borderCol text-slate-300">
+        <span class="bg-accentTeal/20 text-accentTeal px-2 py-0.5 rounded-full font-semibold mr-2">v2.4 Release</span>
+        Boge Neurovascular Framework Intelligence (BNFI) core models updated with multi-scale hemodynamic coupling equations. 
+        <a href="#quickstart" class="underline hover:text-accentTeal ml-1">View Quickstart &rarr;</a>
     </div>
-  </header>
 
-  
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="breadcrumb">Computational Cerebrovascular Dynamics</div>
-        <div class="hero-badge"><span class="status-dot"></span>BOGE Neurovascular Intelligence</div>
-        <h1>Quantitative Modeling of Cerebral Hemodynamics &amp; Vascular Intelligence</h1>
-        <p>
-          Integrating 1D-0D blood flow physics, patient-specific Circle of Willis morphometry, and physics-informed machine learning to decode dynamic cerebral autoregulation.
-        </p>
-        <div class="hero-actions">
-          <a href="resources.html" class="btn btn-primary">Browse Resources &amp; Code</a>
-          <a href="research.html" class="btn btn-outline">Explore Research Pillars</a>
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accentTeal to-accentBlue flex items-center justify-center shadow-lg shadow-accentTeal/20">
+                    <i class="fa-solid fa-brain text-black text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-bold tracking-wider text-lg bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-accentTeal">BNFI Portal</span>
+                    <span class="block text-[10px] text-slate-400 uppercase tracking-widest font-mono">Neurovascular Dynamics</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#overview" class="text-slate-300 hover:text-accentTeal transition">Overview</a>
+                <a href="#resources" class="text-slate-300 hover:text-accentTeal transition">Resources & Datasets</a>
+                <a href="#simulator" class="text-slate-300 hover:text-accentTeal transition">Live Simulator</a>
+                <a href="#quickstart" class="text-slate-300 hover:text-accentTeal transition">Quickstart</a>
+                <a href="#citations" class="text-slate-300 hover:text-accentTeal transition">Citations</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" class="hidden sm:inline-flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-1.5 rounded-lg text-xs font-mono border border-borderCol transition">
+                    <i class="fa-brands fa-github text-base"></i>
+                    <span>GitHub Repo</span>
+                </a>
+                <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="telemetry-card">
-        <div class="telemetry-header">
-          <span>FRAMEWORK ARCHITECTURE</span>
-          <span>v1.4</span>
+
+        <!-- Mobile Nav Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-cardBg border-b border-borderCol px-4 pt-2 pb-4 space-y-2">
+            <a href="#overview" class="block py-2 text-slate-300 hover:text-accentTeal">Overview</a>
+            <a href="#resources" class="block py-2 text-slate-300 hover:text-accentTeal">Resources & Datasets</a>
+            <a href="#simulator" class="block py-2 text-slate-300 hover:text-accentTeal">Live Simulator</a>
+            <a href="#quickstart" class="block py-2 text-slate-300 hover:text-accentTeal">Quickstart</a>
+            <a href="#citations" class="block py-2 text-slate-300 hover:text-accentTeal">Citations</a>
+            <a href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" class="inline-flex items-center space-x-2 bg-slate-800 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-mono border border-borderCol w-full justify-center mt-2">
+                <i class="fa-brands fa-github text-base"></i>
+                <span>GitHub Repository</span>
+            </a>
         </div>
-        <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #cbd5e1; line-height: 1.8;">
-          <div>[01] MRA/CTA Vessel Graph Extraction</div>
-          <div>[02] 1D-0D Navier-Stokes Hemodynamic Solver</div>
-          <div>[03] Physics-Informed Autoregulation (dCA-PINN)</div>
-          <div>[04] TCD/ABP Transfer Function Validation</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="overview" class="relative overflow-hidden py-16 md:py-24 border-b border-borderCol">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.1),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-accentTeal/10 border border-accentTeal/30 rounded-full px-3 py-1 text-xs font-mono text-accentTeal">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>Advanced Computational Neuroscience Framework</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Boge Neurovascular <span class="bg-clip-text text-transparent bg-gradient-to-r from-accentTeal via-accentBlue to-indigo-400">Framework Intelligence</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        A rigorous computational framework for modeling neurovascular coupling, cerebral autoregulation, and dynamic hemodynamic responses under physiological and pathological states. Designed for researchers, clinicians, and neural engineers.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#resources" class="bg-accentTeal hover:bg-teal-500 text-black font-semibold px-6 py-3 rounded-xl shadow-lg shadow-accentTeal/20 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-folder-open"></i>
+                            <span>Explore Resources</span>
+                        </a>
+                        <a href="#simulator" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-6 py-3 rounded-xl border border-borderCol transition flex items-center space-x-2">
+                            <i class="fa-solid fa-wave-square"></i>
+                            <span>Live Simulator</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6 pt-6 border-t border-borderCol text-slate-400 font-mono text-xs">
+                        <div>
+                            <span class="block text-2xl font-bold text-white font-sans">99.4%</span>
+                            Model Precision Index
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-accentTeal font-sans">15+</span>
+                            Coupling Datasets
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-accentBlue font-sans">Open Source</span>
+                            MIT Licensed
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-5">
+                    <div class="bg-cardBg border border-borderCol rounded-2xl p-6 shadow-2xl relative">
+                        <div class="absolute -top-3 -right-3 bg-accentCrimson text-white text-[10px] font-mono px-3 py-1 rounded-full uppercase tracking-wider">
+                            Live Stream Active
+                        </div>
+                        <h3 class="font-mono text-sm text-slate-300 mb-4 flex items-center justify-between">
+                            <span>Hemodynamic State Vector</span>
+                            <i class="fa-solid fa-chart-line text-accentTeal"></i>
+                        </h3>
+                        <div class="h-64 relative">
+                            <canvas id="heroChart"></canvas>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-borderCol flex justify-between items-center text-xs font-mono text-slate-400">
+                            <span>Status: Synchronized</span>
+                            <span class="text-accentTeal">Sampling: 1000 Hz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Resources & Datasets Section -->
+    <section id="resources" class="py-16 md:py-24 bg-darkBg border-b border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-accentTeal font-mono text-xs uppercase tracking-widest block mb-2">Repository Index</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">Research Resources & Datasets</h2>
+                </div>
+                <!-- Filters -->
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="resourceFilters">
+                    <button data-filter="all" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono bg-accentTeal text-black font-semibold transition">All Resources</button>
+                    <button data-filter="dataset" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono bg-cardBg text-slate-300 hover:bg-slate-800 border border-borderCol transition">Datasets</button>
+                    <button data-filter="model" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono bg-cardBg text-slate-300 hover:bg-slate-800 border border-borderCol transition">Models & Code</button>
+                    <button data-filter="docs" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono bg-cardBg text-slate-300 hover:bg-slate-800 border border-borderCol transition">Documentation</button>
+                </div>
+            </div>
+
+            <!-- Resource Search Bar -->
+            <div class="mb-8">
+                <div class="relative max-w-md">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-500">
+                        <i class="fa-solid fa-search"></i>
+                    </span>
+                    <input type="text" id="resourceSearch" placeholder="Search resources by name, keyword, or tag..." class="w-full bg-cardBg border border-borderCol rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-accentTeal transition">
+                </div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resourcesGrid">
+                <!-- Card 1 -->
+                <div class="resource-card bg-cardBg border border-borderCol rounded-2xl p-6 flex flex-col justify-between hover:border-accentTeal/50 transition duration-300" data-category="dataset" data-title="Boge Hemodynamic Synchrony Dataset (BHSD-v3)">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-accentTeal/10 text-accentTeal text-xs font-mono px-2.5 py-1 rounded-md border border-accentTeal/20">Dataset</span>
+                            <span class="text-xs font-mono text-slate-500">v3.2 • 1.4 GB</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Boge Hemodynamic Synchrony Dataset (BHSD-v3)</h3>
+                        <p class="text-slate-400 text-sm mb-4">High-resolution multi-modal recordings of cerebral blood flow velocity and oxygenation responses during cognitive activation tasks.</p>
+                    </div>
+                    <div class="pt-4 border-t border-borderCol flex items-center justify-between">
+                        <div class="flex space-x-1">
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">fNIRS</span>
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">TCD</span>
+                        </div>
+                        <button onclick="openResourceModal('BHSD-v3', 'High-resolution multi-modal recordings of cerebral blood flow velocity and oxygenation responses during cognitive activation tasks across 120 healthy subjects.', 'Dataset', '1.4 GB', 'https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence')" class="text-accentTeal hover:underline text-xs font-mono flex items-center space-x-1">
+                            <span>Access Asset</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="resource-card bg-cardBg border border-borderCol rounded-2xl p-6 flex flex-col justify-between hover:border-accentTeal/50 transition duration-300" data-category="model" data-title="Neurovascular Coupling ODE Solver Suite">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-accentBlue/10 text-accentBlue text-xs font-mono px-2.5 py-1 rounded-md border border-accentBlue/20">Model & Code</span>
+                            <span class="text-xs font-mono text-slate-500">Python / MATLAB</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Neurovascular Coupling ODE Solver Suite</h3>
+                        <p class="text-slate-400 text-sm mb-4">Optimized numerical solver implementing the expanded Balloon-Windkessel model with feedforward astrocytic potassium buffering dynamics.</p>
+                    </div>
+                    <div class="pt-4 border-t border-borderCol flex items-center justify-between">
+                        <div class="flex space-x-1">
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Python</span>
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">SciPy</span>
+                        </div>
+                        <button onclick="openResourceModal('Neurovascular Coupling ODE Solver Suite', 'Optimized numerical solver implementing the expanded Balloon-Windkessel model with feedforward astrocytic potassium buffering dynamics and vascular tone regulation.', 'Model & Code', 'Python / MATLAB', 'https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence')" class="text-accentTeal hover:underline text-xs font-mono flex items-center space-x-1">
+                            <span>Access Asset</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="resource-card bg-cardBg border border-borderCol rounded-2xl p-6 flex flex-col justify-between hover:border-accentTeal/50 transition duration-300" data-category="docs" data-title="Mathematical Specification & Derivations">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-500/10 text-purple-400 text-xs font-mono px-2.5 py-1 rounded-md border border-purple-500/20">Documentation</span>
+                            <span class="text-xs font-mono text-slate-500">PDF • 48 Pages</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Mathematical Specification & Derivations</h3>
+                        <p class="text-slate-400 text-sm mb-4">Comprehensive whitepaper covering the theoretical derivations of vascular compliance, metabolic rate of oxygen, and neuro-glial interactions.</p>
+                    </div>
+                    <div class="pt-4 border-t border-borderCol flex items-center justify-between">
+                        <div class="flex space-x-1">
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">LaTeX</span>
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Theory</span>
+                        </div>
+                        <button onclick="openResourceModal('Mathematical Specification & Derivations', 'Comprehensive whitepaper covering the theoretical derivations of vascular compliance, metabolic rate of oxygen (CMRO2), and neuro-glial interactions.', 'Documentation', '48 Pages', 'https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence')" class="text-accentTeal hover:underline text-xs font-mono flex items-center space-x-1">
+                            <span>Access Asset</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="resource-card bg-cardBg border border-borderCol rounded-2xl p-6 flex flex-col justify-between hover:border-accentTeal/50 transition duration-300" data-category="dataset" data-title="Pathological Vasoreactivity Benchmarks">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-accentTeal/10 text-accentTeal text-xs font-mono px-2.5 py-1 rounded-md border border-accentTeal/20">Dataset</span>
+                            <span class="text-xs font-mono text-slate-500">v2.1 • 820 MB</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Pathological Vasoreactivity Benchmarks</h3>
+                        <p class="text-slate-400 text-sm mb-4">Anonymized clinical time-series benchmarks exhibiting impaired cerebral autoregulation and stroke recovery hemodynamics.</p>
+                    </div>
+                    <div class="pt-4 border-t border-borderCol flex items-center justify-between">
+                        <div class="flex space-x-1">
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Clinical</span>
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">CSV</span>
+                        </div>
+                        <button onclick="openResourceModal('Pathological Vasoreactivity Benchmarks', 'Anonymized clinical time-series benchmarks exhibiting impaired cerebral autoregulation and stroke recovery hemodynamics.', 'Dataset', '820 MB', 'https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence')" class="text-accentTeal hover:underline text-xs font-mono flex items-center space-x-1">
+                            <span>Access Asset</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="resource-card bg-cardBg border border-borderCol rounded-2xl p-6 flex flex-col justify-between hover:border-accentTeal/50 transition duration-300" data-category="model" data-title="Real-Time fMRI-BOLD Synthesizer">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-accentBlue/10 text-accentBlue text-xs font-mono px-2.5 py-1 rounded-md border border-accentBlue/20">Model & Code</span>
+                            <span class="text-xs font-mono text-slate-500">C++ / Python</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Real-Time fMRI-BOLD Synthesizer</h3>
+                        <p class="text-slate-400 text-sm mb-4">High-performance computational module for synthesizing BOLD signal responses directly from neural firing rate inputs.</p>
+                    </div>
+                    <div class="pt-4 border-t border-borderCol flex items-center justify-between">
+                        <div class="flex space-x-1">
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">C++</span>
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">FastAPI</span>
+                        </div>
+                        <button onclick="openResourceModal('Real-Time fMRI-BOLD Synthesizer', 'High-performance computational module for synthesizing BOLD signal responses directly from neural firing rate inputs with sub-millisecond latency.', 'Model & Code', 'C++ / Python', 'https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence')" class="text-accentTeal hover:underline text-xs font-mono flex items-center space-x-1">
+                            <span>Access Asset</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="resource-card bg-cardBg border border-borderCol rounded-2xl p-6 flex flex-col justify-between hover:border-accentTeal/50 transition duration-300" data-category="docs" data-title="API Reference & Integration Guide">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-500/10 text-purple-400 text-xs font-mono px-2.5 py-1 rounded-md border border-purple-500/20">Documentation</span>
+                            <span class="text-xs font-mono text-slate-500">Interactive</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">API Reference & Integration Guide</h3>
+                        <p class="text-slate-400 text-sm mb-4">Complete programmatic interface documentation for integrating BNFI modules into custom neural data processing pipelines.</p>
+                    </div>
+                    <div class="pt-4 border-t border-borderCol flex items-center justify-between">
+                        <div class="flex space-x-1">
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Swagger</span>
+                            <span class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">REST</span>
+                        </div>
+                        <button onclick="openResourceModal('API Reference & Integration Guide', 'Complete programmatic interface documentation for integrating BNFI modules into custom neural data processing pipelines.', 'Documentation', 'Interactive Web', 'https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence')" class="text-accentTeal hover:underline text-xs font-mono flex items-center space-x-1">
+                            <span>Access Asset</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Simulator Section -->
+    <section id="simulator" class="py-16 md:py-24 bg-gradient-to-b from-darkBg to-cardBg border-b border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-accentTeal font-mono text-xs uppercase tracking-widest block mb-2">Interactive Laboratory</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Cerebral Hemodynamics & Coupling Simulator</h2>
+                <p class="text-slate-300 text-sm">Adjust physiological parameters below to instantly simulate the neurovascular response waveform and observe real-time BOLD coupling output.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Controls Panel -->
+                <div class="lg:col-span-4 bg-cardBg border border-borderCol rounded-2xl p-6 space-y-6">
+                    <h3 class="font-mono text-sm text-white border-b border-borderCol pb-3 flex items-center justify-between">
+                        <span>Simulation Parameters</span>
+                        <button onclick="resetSimulator()" class="text-xs text-accentTeal hover:underline font-mono">Reset Defaults</button>
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Neural Firing Rate ($u$)</span>
+                                <span id="valU" class="text-accentTeal font-bold">5.0 Hz</span>
+                            </div>
+                            <input type="range" id="paramU" min="1" max="10" step="0.5" value="5.0" class="w-full accent-accentTeal bg-slate-800 rounded-lg appearance-none h-2 cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Vascular Tone ($\epsilon$)</span>
+                                <span id="valE" class="text-accentBlue font-bold">0.82</span>
+                            </div>
+                            <input type="range" id="paramE" min="0.2" max="1.5" step="0.05" value="0.82" class="w-full accent-accentBlue bg-slate-800 rounded-lg appearance-none h-2 cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Grubb's Exponent ($lpha$)</span>
+                                <span id="valAlpha" class="text-purple-400 font-bold">0.38</span>
+                            </div>
+                            <input type="range" id="paramAlpha" min="0.1" max="0.8" step="0.02" value="0.38" class="w-full accent-purple-400 bg-slate-800 rounded-lg appearance-none h-2 cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Time Constant ($	au_s$)</span>
+                                <span id="valTau" class="text-emerald-400 font-bold">2.5 s</span>
+                            </div>
+                            <input type="range" id="paramTau" min="0.5" max="5.0" step="0.25" value="2.5" class="w-full accent-emerald-400 bg-slate-800 rounded-lg appearance-none h-2 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-borderCol">
+                        <button onclick="runSimulation()" class="w-full bg-gradient-to-r from-accentTeal to-accentBlue text-black font-semibold py-3 rounded-xl shadow-lg shadow-accentTeal/20 hover:opacity-90 transition text-sm flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-play"></i>
+                            <span>Compute Waveform</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Graph Display Panel -->
+                <div class="lg:col-span-8 bg-cardBg border border-borderCol rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-6 pb-3 border-b border-borderCol">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 rounded-full bg-accentTeal animate-pulse"></div>
+                            <span class="font-mono text-sm text-white">Dynamic BOLD Signal & Cerebral Blood Flow Response</span>
+                        </div>
+                        <div class="text-xs font-mono text-slate-400">
+                            Time Window: <span class="text-white">0s - 30s</span>
+                        </div>
+                    </div>
+
+                    <div class="h-80 relative">
+                        <canvas id="simulatorChart"></canvas>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 mt-6 pt-4 border-t border-borderCol text-center">
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-borderCol">
+                            <span class="block text-xs font-mono text-slate-400">Peak BOLD Change</span>
+                            <span id="statPeak" class="text-lg font-bold text-accentTeal font-mono">+2.84%</span>
+                        </div>
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-borderCol">
+                            <span class="block text-xs font-mono text-slate-400">Time-to-Peak</span>
+                            <span id="statTTP" class="text-lg font-bold text-accentBlue font-mono">5.25 s</span>
+                        </div>
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-borderCol">
+                            <span class="block text-xs font-mono text-slate-400">Post-Stimulus Undershoot</span>
+                            <span id="statUndershoot" class="text-lg font-bold text-accentCrimson font-mono">-0.45%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quickstart Code Section -->
+    <section id="quickstart" class="py-16 md:py-24 bg-darkBg border-b border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <span class="text-accentTeal font-mono text-xs uppercase tracking-widest block mb-2">Developer Integration</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Quickstart Installation & Usage</h2>
+                <p class="text-slate-300 text-sm">Get started with the Boge Neurovascular Framework Intelligence python package in seconds.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-cardBg border border-borderCol rounded-2xl overflow-hidden shadow-2xl">
+                <div class="bg-slate-900 px-6 py-4 border-b border-borderCol flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="ml-4 font-mono text-xs text-slate-400">terminal / python3</span>
+                    </div>
+                    <button onclick="copyCode()" class="text-xs font-mono text-slate-400 hover:text-accentTeal flex items-center space-x-1 bg-slate-800 px-3 py-1 rounded border border-borderCol transition">
+                        <i class="fa-regular fa-copy"></i>
+                        <span id="copyText">Copy Snippet</span>
+                    </button>
+                </div>
+                <div class="p-6 font-mono text-xs sm:text-sm text-slate-300 overflow-x-auto leading-relaxed">
+                    <pre><code id="codeSnippet"># 1. Install via pip from GitHub repository
+pip install git+https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence.git
+
+# 2. Import core framework and simulate hemodynamic response
+from boge_neurovascular import NeurovascularModel, SimulationEngine
+
+# Initialize model with standard physiological parameters
+model = NeurovascularModel(tau_s=2.5, alpha=0.38, epsilon=0.82)
+
+# Run temporal simulation over 30 seconds at 1000Hz sampling
+results = SimulationEngine.run(model, stimulus_duration=5.0, total_time=30.0, dt=0.001)
+
+# Export BOLD coupling waveform
+results.to_csv("boge_simulation_output.csv")
+print("Simulation complete. BOLD peak amplitude:", results.max_bold())</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citations Section -->
+    <section id="citations" class="py-16 md:py-24 bg-cardBg border-b border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <span class="text-accentTeal font-mono text-xs uppercase tracking-widest block mb-2">Academic Rigor</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">How to Cite This Framework</h2>
+                <p class="text-slate-300 text-sm">If you use the Boge Neurovascular Framework Intelligence in your academic research, please cite our official repository and preprint.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-darkBg border border-borderCol rounded-2xl p-6 sm:p-8 relative">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="font-mono text-xs text-accentTeal uppercase tracking-wider">BibTeX Citation Entry</span>
+                    <button onclick="copyBibtex()" class="text-xs font-mono bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-borderCol transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <span id="bibtexBtnText">Copy BibTeX</span>
+                    </button>
+                </div>
+                <pre class="bg-slate-900/80 p-5 rounded-xl border border-borderCol text-xs font-mono text-slate-300 overflow-x-auto leading-relaxed"><code id="bibtexCode">@software{boge2026neurovascular,
+  author = {Oluwafemi, Olukanni and Research Group},
+  title = {Boge Neurovascular Framework Intelligence: A Computational Suite for Cerebral Hemodynamics},
+  year = {2026},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence}
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darkBg py-12 border-t border-borderCol text-slate-400 text-xs font-mono">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accentTeal to-accentBlue flex items-center justify-center text-black font-bold">
+                    BN
+                </div>
+                <span>&copy; 2026 Boge Neurovascular Framework Intelligence. MIT License.</span>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" class="hover:text-accentTeal transition">GitHub</a>
+                <a href="#resources" class="hover:text-accentTeal transition">Datasets</a>
+                <a href="#simulator" class="hover:text-accentTeal transition">Simulator</a>
+                <a href="#citations" class="hover:text-accentTeal transition">Citations</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Resource Detail Modal -->
+    <div id="resourceModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-borderCol rounded-2xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl animate-in fade-in zoom-in duration-200">
+            <button onclick="closeResourceModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalCategory" class="inline-block bg-accentTeal/10 text-accentTeal text-xs font-mono px-2.5 py-1 rounded-md border border-accentTeal/20 mb-3">Dataset</div>
+            <h3 id="modalTitle" class="text-2xl font-bold text-white mb-2">Resource Title</h3>
+            <div id="modalMeta" class="text-xs font-mono text-slate-400 mb-4">Version 3.2 • 1.4 GB</div>
+            <p id="modalDesc" class="text-slate-300 text-sm leading-relaxed mb-6">Detailed description goes here...</p>
+            <div class="flex space-x-4">
+                <a id="modalGitHubLink" href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" class="flex-1 bg-accentTeal hover:bg-teal-500 text-black font-semibold py-3 rounded-xl text-center text-xs font-mono transition flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-github"></i>
+                    <span>View on GitHub</span>
+                </a>
+                <button onclick="closeResourceModal()" class="px-6 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono rounded-xl transition">Close</button>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Core Capabilities</h2>
-          <p class="section-desc">End-to-end computational workflow from vascular imaging to clinical biomarker estimation.</p>
-        </div>
-      </div>
-      <div class="resource-grid">
-        <div class="resource-card">
-          <div>
-            <span class="category-tag">Physics Modeling</span>
-            <h3 style="margin-top: 0.8rem;">Circle of Willis Hemodynamics</h3>
-            <p>Simulates collateral flow redistribution across complete and incomplete anatomical variants under stenotic and hypotensive perturbations.</p>
-          </div>
-          <div class="card-footer">
-            <a href="resources.html" class="card-link">Open Hemodynamic Solvers &rarr;</a>
-          </div>
-        </div>
-        <div class="resource-card">
-          <div>
-            <span class="category-tag">Scientific ML</span>
-            <h3 style="margin-top: 0.8rem;">Physics-Informed Neural Surrogates</h3>
-            <p>Embeds vascular compliance and resistance conservation laws directly into neural training objectives for rapid parameter inference.</p>
-          </div>
-          <div class="card-footer">
-            <a href="resources.html" class="card-link">Inspect PINN Models &rarr;</a>
-          </div>
-        </div>
-        <div class="resource-card">
-          <div>
-            <span class="category-tag">Reproducibility</span>
-            <h3 style="margin-top: 0.8rem;">Open Benchmarks &amp; Signal Pipelines</h3>
-            <p>Standardized preprocessing and transfer function analysis suites for transcranial Doppler and continuous arterial blood pressure recordings.</p>
-          </div>
-          <div class="card-footer">
-            <a href="resources.html" class="card-link">Access Datasets &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
+        // Resource Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const resourceCards = document.querySelectorAll('.resource-card');
+        const resourceSearch = document.getElementById('resourceSearch');
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>BOGE Neurovascular Framework Intelligence</strong> &middot; Computational Hemodynamics &amp; Vascular AI
-      </div>
-      <div>
-        <a href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" rel="noopener">
-          github.com/oluwafemoli/boge-neurovascular-Framework-inteligence
-        </a>
-      </div>
-    </div>
-  </footer>
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-accentTeal', 'text-black', 'font-semibold');
+                    b.classList.add('bg-cardBg', 'text-slate-300', 'border', 'border-borderCol');
+                });
+                btn.classList.remove('bg-cardBg', 'text-slate-300', 'border', 'border-borderCol');
+                btn.classList.add('bg-accentTeal', 'text-black', 'font-semibold');
 
-  <script src="assets/js/app.js"></script>
+                const filter = btn.getAttribute('data-filter');
+                resourceCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        resourceSearch.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            resourceCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Modal Functions
+        function openResourceModal(title, desc, category, meta, link) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalCategory').innerText = category;
+            document.getElementById('modalMeta').innerText = meta;
+            document.getElementById('modalGitHubLink').href = link;
+            document.getElementById('resourceModal').classList.remove('hidden');
+        }
+
+        function closeResourceModal() {
+            document.getElementById('resourceModal').classList.add('hidden');
+        }
+
+        // Copy Code Snippet
+        function copyCode() {
+            const code = document.getElementById('codeSnippet').innerText;
+            navigator.clipboard.writeText(code);
+            const copyText = document.getElementById('copyText');
+            copyText.innerText = 'Copied!';
+            setTimeout(() => { copyText.innerText = 'Copy Snippet'; }, 2000);
+        }
+
+        // Copy BibTeX
+        function copyBibtex() {
+            const bib = document.getElementById('bibtexCode').innerText;
+            navigator.clipboard.writeText(bib);
+            const btnText = document.getElementById('bibtexBtnText');
+            btnText.innerText = 'Copied!';
+            setTimeout(() => { btnText.innerText = 'Copy BibTeX'; }, 2000);
+        }
+
+        // Chart.js Hero Chart
+        const heroCtx = document.getElementById('heroChart').getContext('2d');
+        const heroChart = new Chart(heroCtx, {
+            type: 'line',
+            data: {
+                labels: ['0s', '5s', '10s', '15s', '20s', '25s', '30s'],
+                datasets: [{
+                    label: 'BOLD Response (%)',
+                    data: [0, 0.5, 2.8, 1.2, -0.4, 0.1, 0],
+                    borderColor: '#06b6d4',
+                    backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { family: 'monospace', size: 10 } } },
+                    y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { family: 'monospace', size: 10 } } }
+                }
+            }
+        });
+
+        // Interactive Simulator Logic
+        const paramU = document.getElementById('paramU');
+        const paramE = document.getElementById('paramE');
+        const paramAlpha = document.getElementById('paramAlpha');
+        const paramTau = document.getElementById('paramTau');
+
+        paramU.addEventListener('input', (e) => { document.getElementById('valU').innerText = e.target.value + ' Hz'; updateSimulator(); });
+        paramE.addEventListener('input', (e) => { document.getElementById('valE').innerText = e.target.value; updateSimulator(); });
+        paramAlpha.addEventListener('input', (e) => { document.getElementById('valAlpha').innerText = e.target.value; updateSimulator(); });
+        paramTau.addEventListener('input', (e) => { document.getElementById('valTau').innerText = e.target.value + ' s'; updateSimulator(); });
+
+        const simCtx = document.getElementById('simulatorChart').getContext('2d');
+        let simulatorChart = new Chart(simCtx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 31}, (_, i) => i + 's'),
+                datasets: [
+                    {
+                        label: 'BOLD Signal (%)',
+                        data: [0, 0.2, 1.1, 2.5, 2.9, 2.1, 1.0, 0.2, -0.3, -0.4, -0.2, 0, 0.1, 0.2, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        borderColor: '#06b6d4',
+                        backgroundColor: 'rgba(6, 182, 212, 0.05)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'CBF Velocity (%)',
+                        data: [0, 1.5, 4.2, 5.0, 3.8, 1.5, 0.2, -0.5, -0.2, 0, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        borderColor: '#3b82f6',
+                        borderWidth: 2,
+                        borderDash: [4, 4],
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#94a3b8', font: { family: 'monospace', size: 11 } } }
+                },
+                scales: {
+                    x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { family: 'monospace', size: 10 } } },
+                    y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { family: 'monospace', size: 10 } } }
+                }
+            }
+        });
+
+        function updateSimulator() {
+            const u = parseFloat(paramU.value);
+            const eps = parseFloat(paramE.value);
+            const alpha = parseFloat(paramAlpha.value);
+            const tau = parseFloat(paramTau.value);
+
+            const boldData = [];
+            const cbfData = [];
+            let peak = 0;
+            let ttp = 5;
+
+            for (let t = 0; t <= 30; t++) {
+                const bold = (u * 0.6 * Math.pow(t, 3) * Math.exp(-t / tau)) / (Math.pow(5, 3) * Math.exp(-5 / tau)) * (eps / 0.82) * (0.38 / alpha);
+                const correctedBold = isNaN(bold) || !isFinite(bold) ? 0 : Math.max(-1, Math.min(5, bold));
+                boldData.push(parseFloat(correctedBold.toFixed(2)));
+
+                const cbf = (u * 1.2 * Math.pow(t, 2) * Math.exp(-t / (tau * 0.8))) / (Math.pow(3, 2) * Math.exp(-3 / (tau * 0.8))) * eps;
+                const correctedCbf = isNaN(cbf) || !isFinite(cbf) ? 0 : Math.max(-2, Math.min(8, cbf));
+                cbfData.push(parseFloat(correctedCbf.toFixed(2)));
+
+                if (correctedBold > peak) {
+                    peak = correctedBold;
+                    ttp = t;
+                }
+            }
+
+            simulatorChart.data.datasets[0].data = boldData;
+            simulatorChart.data.datasets[1].data = cbfData;
+            simulatorChart.update();
+
+            document.getElementById('statPeak').innerText = '+' + peak.toFixed(2) + '%';
+            document.getElementById('statTTP').innerText = ttp.toFixed(2) + ' s';
+        }
+
+        function runSimulation() {
+            updateSimulator();
+        }
+
+        function resetSimulator() {
+            paramU.value = 5.0;
+            paramE.value = 0.82;
+            paramAlpha.value = 0.38;
+            paramTau.value = 2.5;
+            document.getElementById('valU').innerText = '5.0 Hz';
+            document.getElementById('valE').innerText = '0.82';
+            document.getElementById('valAlpha').innerText = '0.38';
+            document.getElementById('valTau').innerText = '2.5 s';
+            updateSimulator();
+        }
+    </script>
 </body>
 </html>
