@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources & Code | BOGE Neurovascular Framework Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="index.html" class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 3v6m0 0l-5 5m5-5l5 5M7 14v7m10-7v7" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="3" r="2"/>
+            <circle cx="7" cy="14" r="2"/>
+            <circle cx="17" cy="14" r="2"/>
+          </svg>
+        </div>
+        <div>
+          BOGE Neurovascular
+          <span class="brand-sub">Framework Intelligence Lab</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" >Overview</a>
+        <a href="research.html" >Research</a>
+        <a href="resources.html" class="active">Resources &amp; Code</a>
+        <a href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" rel="noopener" class="nav-cta">
+          GitHub Repository
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="breadcrumb">Lab / Resources &amp; Software Infrastructure</div>
+        <div class="hero-badge">
+          <span class="status-dot"></span> Open-Source Research Framework
+        </div>
+        <h1>Resources, Solvers &amp; Neurovascular Toolkits</h1>
+        <p>
+          Modular computational pipelines, physics-informed neural surrogates, and anatomical Circle of Willis benchmarks powering the BOGE Neurovascular Framework Intelligence repository.
+        </p>
+        <div class="hero-actions">
+          <a href="#directory" class="btn btn-primary">Explore Modules</a>
+          <a href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" rel="noopener" class="btn btn-outline">
+            Clone on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="telemetry-card" aria-label="Hemodynamic Telemetry Preview">
+        <div class="telemetry-header">
+          <span><span class="status-dot"></span>MCA_FLOW_VELOCITY_SIM</span>
+          <span>1D-0D + PINN</span>
+        </div>
+        <svg viewBox="0 0 360 110" width="100%" height="110" fill="none">
+          <defs>
+            <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,85 L30,85 L45,22 L62,64 L78,48 L98,85 L150,85 L165,20 L182,63 L198,47 L218,85 L270,85 L285,22 L302,64 L318,48 L338,85 L360,85 L360,110 L0,110 Z" fill="url(#waveGrad)"/>
+          <path d="M0,85 L30,85 L45,22 L62,64 L78,48 L98,85 L150,85 L165,20 L182,63 L198,47 L218,85 L270,85 L285,22 L302,64 L318,48 L338,85 L360,85" stroke="#2dd4bf" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="telemetry-metrics">
+          <div class="metric-item">
+            <span>Mean CBFV</span>
+            <strong>64.2 cm/s</strong>
+          </div>
+          <div class="metric-item">
+            <span>Pulsatility (PI)</span>
+            <strong>0.84</strong>
+          </div>
+          <div class="metric-item">
+            <span>dCA Index (ARI)</span>
+            <strong>5.8 / 9.0</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="directory" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Framework Modules &amp; Datasets</h2>
+          <p class="section-desc">Filter solvers, signal processing pipelines, and benchmark archives by domain.</p>
+        </div>
+      </div>
+
+      <div class="controls-bar">
+        <div class="filter-tabs" role="tablist">
+          <button class="filter-btn active" data-category="All">All Modules</button>
+          <button class="filter-btn" data-category="Hemodynamic Modeling">Hemodynamic Modeling</button>
+          <button class="filter-btn" data-category="Datasets & Benchmarks">Datasets &amp; Benchmarks</button>
+          <button class="filter-btn" data-category="Analysis Pipelines">Analysis Pipelines</button>
+          <button class="filter-btn" data-category="Documentation & Templates">Documentation &amp; Templates</button>
+        </div>
+        <div class="search-box">
+          <input type="search" id="resourceSearch" placeholder="Search solvers, formats, tags..." aria-label="Search modules" />
+        </div>
+      </div>
+
+      <div id="resourceGrid" class="resource-grid"></div>
+    </div>
+  </main>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Quick Start &amp; Citation</h2>
+          <p class="section-desc">Reproduce baseline simulations or cite the BOGE Neurovascular Framework in your work.</p>
+        </div>
+      </div>
+
+      <div class="code-panel">
+        <div class="code-tabs">
+          <div class="tab-group">
+            <button class="code-tab active" data-tab="install">Installation</button>
+            <button class="code-tab" data-tab="usage">Python API</button>
+            <button class="code-tab" data-tab="bibtex">BibTeX Citation</button>
+          </div>
+          <button id="copyCodeBtn" class="copy-btn">Copy</button>
+        </div>
+        <div id="codeDisplay" class="code-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module Inspector Modal -->
+  <div id="moduleModal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <div id="modalCategory" class="category-tag" style="margin-bottom: 0.4rem;"></div>
+          <h3 id="modalTitle" style="font-size: 1.25rem; color: #0f172a;"></h3>
+        </div>
+        <button class="modal-close" onclick="closeModuleModal()" aria-label="Close modal">&times;</button>
+      </div>
+      <p id="modalDesc" style="color: #475569; font-size: 0.92rem;"></p>
+      <div style="margin-top: 1rem; font-size: 0.8rem; font-weight: 600; color: #334155;">Repository Directory Structure</div>
+      <pre id="modalStructure" class="modal-pre"></pre>
+      <div style="font-size: 0.8rem; font-weight: 600; color: #334155;">CLI Execution</div>
+      <pre id="modalCommand" class="modal-pre"></pre>
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+        <button class="filter-btn" onclick="closeModuleModal()">Close</button>
+        <a id="modalRepoLink" href="#" target="_blank" rel="noopener" class="btn btn-primary">View in Repository</a>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>BOGE Neurovascular Framework Intelligence</strong> &middot; Computational Hemodynamics &amp; Vascular AI
+      </div>
+      <div>
+        <a href="https://github.com/oluwafemoli/boge-neurovascular-Framework-inteligence" target="_blank" rel="noopener">
+          github.com/oluwafemoli/boge-neurovascular-Framework-inteligence
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
